@@ -33,7 +33,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("~/.config/hypr/scripts/bar-autohide.sh")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("~/.config/hypr/scripts/video-wallpaper.sh")      -- 2 newest videos in ~/Downloads
-    hl.exec_cmd("~/.config/hypr/scripts/startup-layout.sh 1 2")   -- console+fastfetch strip (HDMI-A-1), rice panes (DP-1)
+    hl.exec_cmd("protonvpn-app", { workspace = "1 silent" })      -- VPN (HDMI-A-1)
+    hl.exec_cmd("zen", { workspace = "2 silent" })                -- browser (DP-1)
 end)
 
 -------------------------------

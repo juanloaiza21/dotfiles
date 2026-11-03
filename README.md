@@ -17,16 +17,15 @@ touching the running session:
 
 hyprpaper / hypridle / hyprlock still use their `.conf` syntax.
 
-## Login layout
-`hypr/scripts/startup-layout.sh` (run from `hyprland.lua`):
-- right screen (HDMI-A-1, ws 1): alacritty console + a pinned fastfetch/gif strip underneath
-- left screen (DP-1, ws 2): fastfetch + animated gif / spotify / cmatrix / cava
-- wallpapers: `video-wallpaper.sh` plays the 2 newest videos in `~/Downloads` with mpvpaper
+## Startup
+`hyprland.lua` autostarts: waybar (one process per monitor), the bar auto-hide watcher, hypridle,
+video wallpapers, Proton VPN (ws 1 / HDMI-A-1) and the Zen browser (ws 2 / DP-1).
 
-The animated gif is drawn by kitty (`kitten icat`) because alacritty has no image protocol;
-everything else uses alacritty. Needs: `mpvpaper` (AUR), `cava`, `cmatrix`, `kitty`, `spotify-launcher`, `jq`.
-Gif (not in the repo): download it to `~/.config/fastfetch/images/rachael-hq.gif`
-(https://gifdb.com/images/branded/high/blade-runner-rachael-pixel-m2ocp9s88n43p0ra.gif).
+Wallpapers: `hypr/scripts/video-wallpaper.sh` plays the 2 newest videos in `~/Downloads` with
+mpvpaper (AUR), converting each once to a light 1080p/30fps copy in `~/.cache/video-wallpapers`.
+
+(A 4-pane "rice" login layout with an animated-gif fastfetch existed in earlier commits and was
+removed; see `git log` if you want it back.)
 
 ## Google Calendar in the bar
 `waybar/scripts/calendar-events.py` shows upcoming events from your calendar's *secret iCal address*
