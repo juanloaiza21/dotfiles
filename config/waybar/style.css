@@ -84,6 +84,18 @@ tooltip label { color: @text; padding: 2px 6px; }
   background: @pink;
 }
 
+/* workspace shown on this bar's monitor while another monitor has focus */
+#workspaces button.visible {
+  color: @text;
+  background: rgba(247, 37, 133, 0.28);
+}
+
+#workspaces button.visible.active,
+#workspaces button.active {
+  color: #1a0614;
+  background: @pink;
+}
+
 #workspaces button.urgent {
   color: #1a0614;
   background: @warn;
