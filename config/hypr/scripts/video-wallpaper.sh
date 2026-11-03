@@ -14,5 +14,5 @@ fi
 
 for i in 0 1; do
   v="${vids[$i]:-${vids[0]}}"            # only one video -> reuse it
-  setsid mpvpaper -p -o "no-audio loop hwdec=auto panscan=1.0" "${MONITORS[$i]}" "$v" >/dev/null 2>&1 &
+  setsid mpvpaper -o "no-audio loop hwdec=auto panscan=1.0" "${MONITORS[$i]}" "$v" >/dev/null 2>&1 &
 done
