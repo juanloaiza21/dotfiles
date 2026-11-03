@@ -1,3 +1,6 @@
 *.bak
 *.log
 .claude/
+*.url
+ics-url
+config/fastfetch/images/*.gif

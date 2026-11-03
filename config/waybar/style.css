@@ -33,6 +33,7 @@ window#waybar > box {
 #workspaces,
 #window,
 #clock,
+#custom-events,
 #tray,
 #mpris,
 #custom-temperature,
@@ -160,3 +161,10 @@ window#waybar.empty #window {
 #tray { padding: 0 8px; }
 #tray > .passive { -gtk-icon-effect: dim; }
 #tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+/* ─────────────────────────────────────────────────────────────── calendar */
+#custom-events { padding: 0 12px; }
+#custom-events.soon { color: @warn; }
+#custom-events.now { color: #1a0614; background: @pink; }
+#custom-events.disconnected { color: @muted; }
+#custom-events:hover { background: @bg-hover; color: @pink; }

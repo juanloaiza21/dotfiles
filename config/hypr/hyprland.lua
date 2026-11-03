@@ -17,17 +17,23 @@ local terminal    = "alacritty"
 local fileManager = "thunar"
 local menu        = [[rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons]]
 
+-------------------------
+---- WORKSPACE RULES ----
+-------------------------
+
+hl.workspace_rule({ workspace = "1", monitor = "HDMI-A-1", default = true })
+hl.workspace_rule({ workspace = "2", monitor = "DP-1",     default = true })
+
 -------------------
 ---- AUTOSTART ----
 -------------------
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd(terminal)
     hl.exec_cmd("~/.config/waybar/launch.sh")
     hl.exec_cmd("~/.config/hypr/scripts/bar-autohide.sh")
-    hl.exec_cmd("spotify")
     hl.exec_cmd("hypridle")
-    hl.exec_cmd("sleep 2 && hyprpaper")
+    hl.exec_cmd("~/.config/hypr/scripts/video-wallpaper.sh")      -- 2 newest videos in ~/Downloads
+    hl.exec_cmd("~/.config/hypr/scripts/startup-layout.sh 1 2")   -- console+fastfetch strip (HDMI-A-1), rice panes (DP-1)
 end)
 
 -------------------------------

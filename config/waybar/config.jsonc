@@ -27,7 +27,8 @@
 
   "modules-center": [
     "clock#time",
-    "clock#date"
+    "clock#date",
+    "custom/events"
   ],
 
   "modules-right": [
@@ -236,6 +237,17 @@
       "on-click": "mode",
       "on-click-right": "mode"
     }
+  },
+
+  // ───────────────────────────────────────────────────────────┤ calendar ├───
+
+  "custom/events": {
+    "exec": "~/.config/waybar/scripts/calendar-events.py",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 300,
+    "tooltip": true,
+    "on-click": "xdg-open https://calendar.google.com"
   },
 
   // ─────────────────────────────────────────────────────────────┤ network ├───
