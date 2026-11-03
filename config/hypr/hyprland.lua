@@ -14,7 +14,7 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@100", position = "1920x0", s
 ---------------------
 
 local terminal    = "alacritty"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu        = [[rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons]]
 
 -------------------
@@ -178,8 +178,8 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Screenshots
-hl.bind("Print",         hl.dsp.exec_cmd([[grim "/home/juloaizar/images/screenshots/$(date +'%Y-%m-%d_%H:%M:%S.png')"]]))
-hl.bind("SHIFT + Print", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
+hl.bind("Print",         hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh full"))
+hl.bind("SHIFT + Print", hl.dsp.exec_cmd("~/.config/hypr/scripts/screenshot.sh region"))
 
 -- Multimedia
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })

@@ -7,6 +7,8 @@
   border: none;
   margin: 0;
   padding: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
   /* Add subtle glow to text for cyberpunk effect */
   text-shadow: 0 0 5px rgba(192, 11, 135, 0.3);
 }
@@ -51,13 +53,13 @@ tooltip label {
 #cpu,
 #idle_inhibitor,
 #clock,
-#custom-wifi,
-#bluetooth,
+#network,
 #custom-update,
 #mpris,
 #pulseaudio,
-#backlight,
-#battery,
+#custom-gpu,
+#disk,
+#tray,
 #custom-power {
   opacity: 0.95;
   color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
@@ -283,28 +285,18 @@ tooltip label {
 
 /* ────────────────────────────────────────────────────────────────┤ wi-fi ├───
 */
-#custom-wifi {
+#network {
   background: rgba(151, 9, 106, 0.55); /* More translucent */
   padding: 0 8px 0 5px;
 }
 
-#custom-wifi:hover {
+#network:hover {
   color: rgba(255, 33, 140, 0.95);
   text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
 }
 
-/* ────────────────────────────────────────────────────────────┤ bluetooth ├───
+/* ────────────────────────────────────────────────────────────┤ network ├─────
 */
-#bluetooth {
-  background: rgba(151, 9, 106, 0.55); /* More translucent */
-  padding-right: 5px;
-}
-
-#bluetooth:hover {
-  color: rgba(255, 33, 140, 0.95);
-  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
-}
-
 /* ────────────────────────────────────────────────────────┤ system update ├───
 */
 #custom-update {
@@ -367,13 +359,13 @@ tooltip label {
   margin-right: -1px;
 }
 
-#backlight {
+#custom-gpu {
   background: rgba(30, 13, 25, 0.45); /* More translucent */
   padding: 0 5px;
   margin-left: -1px;
 }
 
-/* ──────────────────────────────────────────────────────────────┤ battery ├───
+/* ──────────────────────────────────────────────────────────────┤ disk / gpu ├───
 */
 #custom-left8 {
   background: rgba(30, 13, 25, 0.45); /* More translucent */
@@ -381,26 +373,23 @@ tooltip label {
   margin-right: -1px;
 }
 
-#battery {
+#disk {
   color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
   background: rgba(57, 11, 98, 0.55); /* More translucent */
   padding: 0 5px;
   margin-left: -1px;
 }
 
-#battery.warning {
+#disk.warning,
+#custom-gpu.warning {
   color: rgba(255, 200, 0, 0.95);
   text-shadow: 0 0 5px rgba(255, 200, 0, 0.6);
 }
 
-#battery.critical {
+#disk.critical,
+#custom-gpu.critical {
   color: rgba(255, 33, 140, 0.95);
   text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
-}
-
-#battery.charging {
-  color: rgba(0, 255, 196, 0.95);
-  text-shadow: 0 0 5px rgba(0, 255, 196, 0.6);
 }
 
 /* ─────────────────────────────────────────────────────────┤ power button ├───
@@ -502,13 +491,12 @@ tooltip label,
 #cpu,
 #idle_inhibitor,
 #clock,
-#custom-wifi,
-#bluetooth,
+#network,
 #custom-update,
 #mpris,
 #pulseaudio,
-#backlight,
-#battery {
+#custom-gpu,
+#disk {
   border-radius: 8px;
   margin: 2px 0;
 }
@@ -517,3 +505,15 @@ tooltip label,
 window#waybar {
   background: rgba(0, 0, 0, 0); /* Fully transparent background */
 }
+
+/* ─────────────────────────────────────────────────────────────────┤ tray ├───
+*/
+#tray {
+  background: rgba(30, 13, 25, 0.45);
+  border-radius: 8px;
+  padding: 0 8px;
+  margin: 0 2px;
+}
+
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }

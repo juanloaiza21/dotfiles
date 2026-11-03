@@ -44,23 +44,23 @@
     "clock#date",           // date
     "custom/right4",
 
-    "custom/wifi",          // wi-fi
-    "bluetooth",            // bluetooth
+    "network",              // ethernet / bandwidth
     "custom/update",        // system update
     "custom/right5"
   ],
 
   "modules-right": [
+    "tray",                 // app tray (spotify, discord, ...)
     "mpris",                // media info
 
     "custom/left6",
     "pulseaudio",           // output device
 
     "custom/left7",
-    "backlight",            // brightness
+    "custom/gpu",           // gpu
 
     "custom/left8",
-    "battery",              // battery
+    "disk",                 // disk usage
 
     "custom/leftin2",
     "custom/power"          // power button
@@ -293,43 +293,16 @@
     "max-length": 8
   },
 
-  // ──────────────────────────────────────────────────────────────┤ wi-fi ├───
+  // ─────────────────────────────────────────────────────────────┤ network ├───
 
-  "custom/wifi": {
-    "exec": "~/.config/waybar/scripts/wifi-status.sh",
-    "return-type": "json",
-    "format": "{}",
-    "on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+  "network": {
+    "interval": 2,
+    "format-ethernet": "󰈀 ↓{bandwidthDownBytes}",
+    "format-wifi": "󰤨 ↓{bandwidthDownBytes}",
+    "format-disconnected": "󰖪 offline",
+    "tooltip-format": ":: {ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
     "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
-    "interval": 1,
-    "min-length": 1,
-    "max-length": 1
-  },
-
-  // ──────────────────────────────────────────────────────────┤ bluetooth ├───
-
-  "bluetooth": {
-    "format": "󰂰",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-connected-battery": "󰂱",
-
-    "tooltip-format": 
-      "{num_connections} connected",
-    "tooltip-format-disabled": 
-      "Bluetooth Disabled",
-    "tooltip-format-connected": 
-      "{device_enumerate}",
-    "tooltip-format-enumerate-connected": 
-      "{device_alias}",
-    "tooltip-format-enumerate-connected-battery": 
-      ":: {device_alias}: 󱊣 {device_battery_percentage}%",
-
-    "on-click": "~/.config/waybar/scripts/bluetooth-menu.sh",
-    "on-click-right": "kitty --title '󰂯  Bluetooth TUI' bash -c bluetui",
-    "interval": 1,
-    "min-length": 1,
-    "max-length": 1
+    "min-length": 11
   },
 
   // ──────────────────────────────────────────────────────┤ system update ├───
@@ -385,35 +358,31 @@
     "max-length": 6
   },
 
-  // ─────────────────────────────────────────────────────────┤ brightness ├───
+  // ───────────────────────────────────────────────────────────────┤ gpu ├───
 
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
-    "tooltip": false,
-    "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
-    "min-length": 6,
-    "max-length": 6
+  "custom/gpu": {
+    "exec": "~/.config/waybar/scripts/gpu.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 5,
+    "on-click": "kitty --title 'nvtop' nvtop"
   },
 
-  // ────────────────────────────────────────────────────────────┤ battery ├───
+  // ───────────────────────────────────────────────────────────────┤ disk ├───
 
-  "battery": {
-    "states": {
-      "warning": 20,
-      "critical": 10
-    },
+  "disk": {
+    "path": "/",
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "tooltip-format": "{used} / {total} used on {path}",
+    "states": { "warning": 80, "critical": 90 }
+  },
 
-    "format": "{icon} {capacity}%",
-    "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": " {capacity}%",
+  // ─────────────────────────────────────────────────────────────┤ tray ├───
 
-    "tooltip-format": "Discharging: {time}",
-    "tooltip-format-charging": "Charging: {time}",
-    "interval": 1,
-    "min-length": 6,
-    "max-length": 6
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
   },
 
   // ───────────────────────────────────────────────────────┤ power button ├───
