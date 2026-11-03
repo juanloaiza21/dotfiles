@@ -1,0 +1,15 @@
+configuration {
+  modes: "window,drun,ssh,combi";
+  font: "hack 10";
+  combi-modes: "window,drun,ssh";
+  timeout {
+    action: "kb-cancel";
+    delay: 0;
+  }
+  filebrowser {
+    directories-first: true;
+    sorting-method: "name";
+  }
+}
+
+@theme "~/.config/rofi/theme.rasi"

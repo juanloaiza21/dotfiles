@@ -1,0 +1,51 @@
+# Mako configuration with Cyberpunk Neon theme
+# Created for: juanloaiza21
+
+# Base colors
+background-color=#1E0D19CC
+text-color=#FFFFFFEE
+
+# Border and appearance
+border-color=#600FB1FF
+border-size=2
+border-radius=10
+progress-color=source #C00B87AA
+
+# Layout
+width=350
+height=100
+margin=10
+padding=15
+icons=1
+max-icon-size=48
+
+# Icon positioning
+icon-path=/usr/share/icons/Papirus-Dark
+icon-location=left
+
+# Text formatting
+format=<b>%s</b>\n%b
+default-timeout=5000
+ignore-timeout=0
+
+# Behavior
+max-visible=5
+layer=overlay
+anchor=top-right
+
+# Style
+font=JetBrainsMono Nerd Font 10
+
+# Special states
+[urgency=low]
+border-color=#390B62FF
+default-timeout=3000
+
+[urgency=normal]
+border-color=#600FB1FF
+default-timeout=5000
+
+[urgency=high]
+border-color=#C00B87FF
+text-color=#FFFDDFEE
+default-timeout=0
