@@ -1,9 +1,11 @@
 {
   // ─────────────────────────────────────────────────────────────┤ header ├───
 
-  "layer": "top",
+  "layer": "overlay",          // above fullscreen windows (bar-autohide.sh hides/reveals it)
+  "on-sigusr1": "show",
+  "on-sigusr2": "hide",
   "position": "top",
-  "mode": "dock",
+  "exclusive": true,           // keep reserving space even though the layer is overlay
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
 

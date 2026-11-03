@@ -24,6 +24,7 @@ local menu        = [[rofi -combi-modi window,drun,ssh -theme solarized -font "h
 hl.on("hyprland.start", function()
     hl.exec_cmd(terminal)
     hl.exec_cmd("waybar")
+    hl.exec_cmd("~/.config/hypr/scripts/bar-autohide.sh")
     hl.exec_cmd("spotify")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("sleep 2 && hyprpaper")
