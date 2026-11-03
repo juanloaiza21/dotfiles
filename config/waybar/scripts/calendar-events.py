@@ -3,7 +3,7 @@
 URL file: ~/.config/gcal/ics-url  (chmod 600, NOT part of the dotfiles repo)
 Test override: ICS_FILE=/path/to/file.ics
 Output: waybar JSON {text, tooltip, class}."""
-import json, os, re, sys, time, urllib.request
+import html, json, os, re, sys, time, urllib.request
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -150,7 +150,8 @@ def main():
     else:
         m = int((s - now).total_seconds() // 60)
         when = f"in {m}m" if m < 60 else (f"in {m//60}h" if m < 1440 and s.date() == now.date() else s.strftime("%a %H:%M"))
-    short = title if len(title) <= 28 else title[:27] + "…"
+    base = re.sub(r"\s*\([^)]*\)\s*$", "", title) or title   # drop trailing "(calendar name)"
+    short = base if len(base) <= 28 else base[:27] + "…"
     cls = "soon" if (not ad and 0 <= (s - now).total_seconds() <= 1800) else ("now" if (not ad and s <= now < e) else "")
     lines, day = [], None
     for s2, e2, ad2, t2 in upcoming:
@@ -159,7 +160,7 @@ def main():
             day = d
             label = "Today" if d == now.date() else ("Tomorrow" if d == (now + timedelta(days=1)).date() else s2.strftime("%A %d"))
             lines.append(f"<b>{label}</b>")
-        lines.append(f"  {'all day' if ad2 else s2.strftime('%H:%M') + '–' + e2.strftime('%H:%M')}  {t2}")
-    out(f"󰃭 {short} · {when}", "\n".join(lines).replace("&", "&amp;").replace("<b>", "<b>"), cls)
+        lines.append(f"  {'all day' if ad2 else s2.strftime('%H:%M') + '–' + e2.strftime('%H:%M')}  {html.escape(t2, quote=False)}")
+    out(f"󰃭 {html.escape(short, quote=False)} · {when}", "\n".join(lines), cls)
 
 main()
