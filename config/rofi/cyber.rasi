@@ -1,0 +1,11 @@
+/* Pink/purple palette shared with waybar (style.css) and Hyprland borders. */
+* {
+  main-bg:    #160914f2;
+  main-fg:    #f4e8f1;
+  main-br:    #f7258566;
+  muted:      #b9a3b3;
+  hover-bg:   #3c0e46bf;
+  select-bg:  #f72585;
+  select-fg:  #1a0614;
+  crit:       #ff2d6f;
+}

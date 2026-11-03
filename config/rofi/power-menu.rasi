@@ -1,23 +1,21 @@
-/* Power menu */
+/* Power menu: rounded pills to match the waybar style. */
 
-@theme "~/.config/rofi/theme.rasi"
+@theme "~/.config/rofi/cyber.rasi"
 
 configuration {
-  font:                     "JetBrainsMono Nerd Font 8";
+  font:                     "JetBrainsMono Nerd Font 11";
   hover-select:             true;
   me-select-entry:          "MousePrimary";
   me-accept-entry:          "!MousePrimary";
 }
 
-/* Window */
-
 window {
   location:                 northeast;
-  anchor:                   north;
-  x-offset:                 -3px;
-  y-offset:                 3px;
-  width:                    150px;
-  border:                   3px;
+  anchor:                   northeast;
+  x-offset:                 -10px;
+  y-offset:                 6px;
+  width:                    210px;
+  border:                   1px;
   border-radius:            10px;
   border-color:             @main-br;
   background-color:         @main-bg;
@@ -26,47 +24,37 @@ window {
 
 mainbox {
   spacing:                  0;
-  background-color:         @main-br;
-  text-color:               @main-fg;
-  children:                 [ textbox-custom, listview ];
+  padding:                  6px;
+  background-color:         transparent;
+  children:                 [ listview ];
 }
-
-textbox-custom {
-  font:                     "JetBrainsMono Nerd Font Bold 2";
-  horizontal-align:         0.5;
-  padding:                  0;
-  expand:                   false;
-  background-color:         @select-bg;
-  text-color:               @select-fg;
-  expand:                   false;
-  // content:                  "  Power";
-}
-
-/* List */
 
 listview {
-  border:                   2px 0 0 0;
-  border-radius:            8px;
-  border-color:             @main-br;
   lines:                    6;
-  padding:                  6px;
-  background-color:         @main-bg;
+  spacing:                  4px;
+  fixed-height:             true;
+  scrollbar:                false;
+  background-color:         transparent;
 }
 
 element {
-  padding:                  6px;
+  padding:                  8px 12px;
+  border-radius:            8px;
   cursor:                   pointer;
-  background-color:         inherit;
+  background-color:         transparent;
+  text-color:               @main-fg;
+}
+element normal.normal {
+  background-color:         transparent;
   text-color:               @main-fg;
 }
 element selected.normal {
-  border-radius:            6px;
   background-color:         @select-bg;
   text-color:               @select-fg;
 }
 element-text {
-  padding:                  0 6px;
+  vertical-align:           0.5;
   cursor:                   inherit;
-  background-color:         inherit;
+  background-color:         transparent;
   text-color:               inherit;
 }
