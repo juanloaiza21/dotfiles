@@ -14,10 +14,18 @@ decide() { # y fs shown -> show|hide|keep
 }
 [ "$1" = "--decide" ] && { decide "$2" "$3" "$4"; exit 0; }
 
-exec 9>"${XDG_RUNTIME_DIR:-/tmp}/bar-autohide.lock"; flock -n 9 || exit 0
+# One watcher per Hyprland SESSION: the lock is keyed by the instance signature, so a watcher
+# left over from a previous session (setsid survives logout) can never block the new one.
+exec 9>"${XDG_RUNTIME_DIR:-/tmp}/bar-autohide-${HYPRLAND_INSTANCE_SIGNATURE:-none}.lock"; flock -n 9 || exit 0
 declare -A shown
+fails=0
 while true; do
-  cur=$(hyprctl cursorpos -j); mons=$(hyprctl monitors -j); wss=$(hyprctl workspaces -j)
+  cur=$(hyprctl cursorpos -j 2>/dev/null); mons=$(hyprctl monitors -j 2>/dev/null); wss=$(hyprctl workspaces -j 2>/dev/null)
+  # compositor gone (logout)? stop instead of running forever against a dead socket
+  if [ -z "$cur" ] || [ -z "$mons" ] || [ -z "$wss" ]; then
+    fails=$((fails + 1)); [ "$fails" -ge 10 ] && exit 0; sleep 1; continue
+  fi
+  fails=0
   while read -r name fs rely; do
     [ -z "$name" ] && continue
     s=${shown[$name]:-1}
