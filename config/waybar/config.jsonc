@@ -9,73 +9,39 @@
 
   // ──────────────────────────────────────────────────────────┤ positions ├───
 
+  "margin-top": 6,
+  "margin-left": 10,
+  "margin-right": 10,
+  "height": 32,
+  "spacing": 6,
+
+  // ──────────────────────────────────────────────────────────┤ positions ├───
+  // One style only: rounded pills, no arrow separators.
+
   "modules-left": [
-    "custom/theme",         // theme switcher
-    "custom/left1",
-
-    "hyprland/workspaces",  // workspaces
-    "custom/right1",
-
-    "custom/paddw",
-    "hyprland/window"       // window title
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
 
   "modules-center": [
-    "custom/paddc",
-    "custom/left2",
-    "custom/temperature",   // temperature
-
-    "custom/left3",
-    "memory",               // memory
-
-    "custom/left4",
-    "cpu",                  // cpu
-    "custom/leftin1",
-
-    "custom/left5",
-    "custom/distro",        // distro icon
-    "custom/right2",
-
-    "custom/rightin1",
-    "idle_inhibitor",       // idle inhibitor
-    "clock#time",           // time
-    "custom/right3",
-
-    "clock#date",           // date
-    "custom/right4",
-
-    "network",              // ethernet / bandwidth
-    "custom/update",        // system update
-    "custom/right5"
+    "clock#time",
+    "clock#date"
   ],
 
   "modules-right": [
-    "tray",                 // app tray (spotify, discord, ...)
-    "mpris",                // media info
-
-    "custom/left6",
-    "pulseaudio",           // output device
-
-    "custom/left7",
-    "custom/gpu",           // gpu
-
-    "custom/left8",
-    "disk",                 // disk usage
-
-    "custom/leftin2",
-    "custom/power"          // power button
+    "tray",
+    "mpris",
+    "custom/temperature",
+    "cpu",
+    "memory",
+    "custom/gpu",
+    "disk",
+    "network",
+    "custom/update",
+    "pulseaudio",
+    "idle_inhibitor",
+    "custom/power"
   ],
-
-  // ─────────────────────────────────────────────────────┤ theme switcher ├───
-
-  "custom/theme": {
-    "exec": "~/.config/waybar/scripts/current-theme.sh",
-    "return-type": "json",
-    "format": " 󰤕 ",
-    "on-click": "~/.config/waybar/scripts/theme-switcher.sh",
-    "min-length": 3,
-    "max-length": 3
-  },
 
   // ─────────────────────────────────────────────────────────┤ workspaces ├───
 
@@ -199,9 +165,7 @@
     "exec": "~/.config/waybar/scripts/cpu-temp.sh",
     "return-type": "json",
     "format": "{}",
-    "interval": 5,
-    "min-length": 8,
-    "max-length": 8
+    "interval": 5
   },
 
   // ─────────────────────────────────────────────────────────────┤ memory ├───
@@ -216,9 +180,7 @@
     "format-critical": "󰀦 {percentage}%",
     "tooltip": false,
     // "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB",
-    "interval": 5,
-    "min-length": 7,
-    "max-length": 7
+    "interval": 5
   },
 
   // ────────────────────────────────────────────────────────────────┤ cpu ├───
@@ -226,16 +188,7 @@
   "cpu": {
     "format": "󰍛 {usage}%",
     "tooltip": false,
-    "interval": 5,
-    "min-length": 6,
-    "max-length": 6
-  },
-
-  // ─────────────────────────────────────────────────────────────┤ distro ├───
-
-  "custom/distro": {
-    "format": " ",
-    "tooltip": false
+    "interval": 5
   },
 
   // ─────────────────────────────────────────────────────┤ idle inhibitor ├───
@@ -257,10 +210,8 @@
 
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip": false,
-    // "tooltip-format": "Standard Time: {:%I:%M %p}",
-    "min-length": 6,
-    "max-length": 6
+    "tooltip": false
+    // "tooltip-format": "Standard Time: {:%I:%M %p}"
   },
 
   // ───────────────────────────────────────────────────────────────┤ date ├───
@@ -287,10 +238,7 @@
     "actions": {
       "on-click": "mode",
       "on-click-right": "mode"
-    },
-
-    "min-length": 8,
-    "max-length": 8
+    }
   },
 
   // ─────────────────────────────────────────────────────────────┤ network ├───
@@ -312,9 +260,7 @@
     "return-type": "json",
     "format": "{}",
     "on-click": "~/.config/waybar/scripts/system-update.sh up",
-    "interval": 30,
-    "min-length": 1,
-    "max-length": 1
+    "interval": 30
   },
 
   // ─────────────────────────────────────────────────────────┤ media info ├───
@@ -333,9 +279,7 @@
     },
 
     "tooltip-format": "Playing: {title} - {artist}",
-    "tooltip-format-paused": "Paused: {title} - {artist}",
-    "min-length": 5,
-    "max-length": 35
+    "tooltip-format-paused": "Paused: {title} - {artist}"
   },
 
   // ──────────────────────────────────────────────────────┤ output device ├───
@@ -353,9 +297,7 @@
     "tooltip-format": "Device: {desc}",
     "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
     "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
-    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
-    "min-length": 6,
-    "max-length": 6
+    "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d"
   },
 
   // ───────────────────────────────────────────────────────────────┤ gpu ├───
@@ -392,93 +334,5 @@
     "tooltip": false,
     // "tooltip-format": "Power Menu",
     "on-click": "~/.config/waybar/scripts/power-menu.sh"
-  },
-
-  // ────────────────────────────────────────────────────────────┤ padding ├───
-
-  "custom/paddw": {
-    "format": " ",
-    "tooltip": false
-  },
-
-  "custom/paddc": {
-    "format": " ",
-    "tooltip": false
-  },
-
-  // ────────────────────────────────────────────────────────┤ left arrows ├───
-
-  "custom/left1": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left2": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left3": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left4": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left5": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left6": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left7": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left8": {
-    "format": "",
-    "tooltip": false
-  },
-
-  // ───────────────────────────────────────────────────────┤ right arrows ├───
-
-  "custom/right1": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right2": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right3": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right4": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/right5": {
-    "format": "",
-    "tooltip": false
-  },
-
-  // ───────────────────────────────────────────────────────┤ left inverse ├───
-
-  "custom/leftin1": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/leftin2": {
-    "format": "",
-    "tooltip": false
-  },
-
-  // ──────────────────────────────────────────────────────┤ right inverse ├───
-
-  "custom/rightin1": {
-    "format": "",
-    "tooltip": false
   }
 }
