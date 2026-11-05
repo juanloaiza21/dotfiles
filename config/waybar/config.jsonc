@@ -22,7 +22,8 @@
 
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/window",
+    "mpris"
   ],
 
   "modules-center": [
@@ -33,7 +34,6 @@
 
   "modules-right": [
     "tray",
-    "mpris",
     "custom/temperature",
     "cpu",
     "memory",
@@ -61,6 +61,7 @@
     "format": "{}",
     "tooltip": false,
     "min-length": 5,
+    "max-length": 34,
 
     "rewrite": {
       // ────────────────────────────────────────────────────────── desktop ───
@@ -275,6 +276,8 @@
   // ─────────────────────────────────────────────────────────┤ media info ├───
 
   "mpris": {
+    "max-length": 36,
+    "ellipsize": true,
     "format": "{player_icon} {title} - {artist}",
     "format-paused": "{status_icon} {title} - {artist}",
 

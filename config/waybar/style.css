@@ -1,8 +1,8 @@
 /* Clean rounded-pill Waybar theme (pink/purple, matches Hyprland borders).
    One shape language only: every module is a rounded pill. No arrow separators. */
 
-@define-color bg        rgba(22, 9, 20, 0.62);
-@define-color bg-hover  rgba(60, 14, 70, 0.75);
+@define-color bg        rgba(22, 9, 20, 0.90);
+@define-color bg-hover  rgba(60, 14, 70, 0.95);
 @define-color border    rgba(247, 37, 133, 0.40);
 @define-color text      #f4e8f1;
 @define-color muted     #b9a3b3;
