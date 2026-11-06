@@ -15,7 +15,7 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@100", position = "1920x0", s
 
 local terminal    = "alacritty"
 local fileManager = "thunar"
-local menu        = [[rofi -combi-modi window,drun,ssh -theme solarized -font "hack 10" -show combi -icon-theme "Papirus" -show-icons]]
+local menu        = [[rofi -show combi -combi-modi "drun,window" -theme ~/.config/rofi/launcher.rasi]]
 
 -------------------------
 ---- WORKSPACE RULES ----
