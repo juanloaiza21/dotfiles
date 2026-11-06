@@ -1,51 +1,54 @@
-# Mako configuration with Cyberpunk Neon theme
-# Created for: juanloaiza21
+# Mako — matches the Waybar pill theme (dark plum, pink accents, rounded).
 
-# Base colors
-background-color=#1E0D19CC
-text-color=#FFFFFFEE
+font=JetBrainsMono Nerd Font 11
+background-color=#160914F0
+text-color=#f4e8f1
+border-color=#f7258566
+border-size=1
+border-radius=12
+padding=14,16
+margin=52,14,0,0
+outer-margin=0
+width=380
+height=140
+anchor=top-right
+layer=overlay
+max-visible=4
+sort=-time
 
-# Border and appearance
-border-color=#600FB1FF
-border-size=2
-border-radius=10
-progress-color=source #C00B87AA
-
-# Layout
-width=350
-height=100
-margin=10
-padding=15
 icons=1
-max-icon-size=48
-
-# Icon positioning
+max-icon-size=44
 icon-path=/usr/share/icons/Papirus-Dark
 icon-location=left
+icon-border-radius=8
 
-# Text formatting
-format=<b>%s</b>\n%b
-default-timeout=5000
+markup=1
+format=<span size="small" foreground="#b9a3b3">%a</span>\n<b>%s</b>\n%b
+text-alignment=left
+max-history=30
+group-by=app-name
+
+progress-color=over #f72585
+default-timeout=6000
 ignore-timeout=0
 
-# Behavior
-max-visible=5
-layer=overlay
-anchor=top-right
-
-# Style
-font=JetBrainsMono Nerd Font 10
-
-# Special states
 [urgency=low]
-border-color=#390B62FF
-default-timeout=3000
+border-color=#b5179e55
+text-color=#b9a3b3
+default-timeout=3500
 
 [urgency=normal]
-border-color=#600FB1FF
-default-timeout=5000
+border-color=#f7258566
+default-timeout=6000
 
-[urgency=high]
-border-color=#C00B87FF
-text-color=#FFFDDFEE
+[urgency=critical]
+border-color=#ff2d6fff
+border-size=2
+background-color=#2a0a18F5
 default-timeout=0
+
+[grouped]
+format=<span size="small" foreground="#b9a3b3">%a  ·  (%g)</span>\n<b>%s</b>\n%b
+
+[mode=do-not-disturb]
+invisible=1
