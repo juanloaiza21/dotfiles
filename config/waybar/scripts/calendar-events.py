@@ -125,6 +125,17 @@ def expand(ev, start_w, end_w):
 
 def clean(t): return re.sub(r"\\([,;nN\\])", lambda m: "\n" if m.group(1) in "nN" else m.group(1), t)
 
+def tooltip_for(upcoming, now):
+    lines, day = [], None
+    for s2, e2, ad2, t2 in upcoming:
+        d = s2.date()
+        if d != day:
+            day = d
+            label = "Today" if d == now.date() else ("Tomorrow" if d == (now + timedelta(days=1)).date() else s2.strftime("%A %d"))
+            lines.append(f"<b>{label}</b>")
+        lines.append(f"  {'all day' if ad2 else s2.strftime('%H:%M') + '–' + e2.strftime('%H:%M')}  {html.escape(t2, quote=False)}")
+    return "\n".join(lines)
+
 def main():
     raw = load_ics()
     now = datetime.now().astimezone()
@@ -142,25 +153,21 @@ def main():
     occ.sort(key=lambda o: (o[0], o[3]))
     upcoming = [o for o in occ if o[1] > now or (o[2] and o[0].date() == now.date())]
     if not upcoming: out("󰃭 no events", "Nothing in the next 7 days", "")
-    # headline = first non-allday event not yet ended, else first event
-    head = next((o for o in upcoming if not o[2] and o[1] > now), upcoming[0])
+    # headline = next timed event TODAY (not yet ended); nothing else leaks in
+    today = [o for o in upcoming if o[0].date() == now.date() or (not o[2] and o[0] <= now < o[1])]
+    tooltip_lines = tooltip_for(upcoming, now)
+    head = next((o for o in today if not o[2] and o[1] > now), None)
+    if head is None:
+        left = [o for o in today if o[2]]
+        out("󰃭 " + ("all day: " + (re.sub(r"\s*\([^)]*\)\s*$", "", left[0][3]) or left[0][3])[:24] if left else "free today"), tooltip_lines, "")
     s, e, ad, title = head
-    if ad: when = "all day" if s.date() == now.date() else s.strftime("%a")
-    elif s <= now: when = "now"
+    if s <= now: when = "now"
     else:
         m = int((s - now).total_seconds() // 60)
-        when = f"in {m}m" if m < 60 else (f"in {m//60}h" if m < 1440 and s.date() == now.date() else s.strftime("%a %H:%M"))
+        when = f"in {m}m" if m < 60 else f"in {m//60}h {m%60:02d}m" if m % 60 else f"in {m//60}h"
     base = re.sub(r"\s*\([^)]*\)\s*$", "", title) or title   # drop trailing "(calendar name)"
     short = base if len(base) <= 28 else base[:27] + "…"
     cls = "soon" if (not ad and 0 <= (s - now).total_seconds() <= 1800) else ("now" if (not ad and s <= now < e) else "")
-    lines, day = [], None
-    for s2, e2, ad2, t2 in upcoming:
-        d = s2.date()
-        if d != day:
-            day = d
-            label = "Today" if d == now.date() else ("Tomorrow" if d == (now + timedelta(days=1)).date() else s2.strftime("%A %d"))
-            lines.append(f"<b>{label}</b>")
-        lines.append(f"  {'all day' if ad2 else s2.strftime('%H:%M') + '–' + e2.strftime('%H:%M')}  {html.escape(t2, quote=False)}")
-    out(f"󰃭 {html.escape(short, quote=False)} · {when}", "\n".join(lines), cls)
+    out(f"󰃭 {html.escape(short, quote=False)} · {when} ({s.strftime('%H:%M')})", tooltip_lines, cls)
 
 main()
