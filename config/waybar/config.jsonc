@@ -15,7 +15,7 @@
   "margin-left": 10,
   "margin-right": 10,
   "height": 32,
-  "spacing": 6,
+  "spacing": 10,
 
   // ──────────────────────────────────────────────────────────┤ positions ├───
   // One style only: rounded pills, no arrow separators.
@@ -27,22 +27,16 @@
   ],
 
   "modules-center": [
-    "clock#time",
-    "clock#date",
+    "clock",
     "custom/events"
   ],
 
   "modules-right": [
     "tray",
-    "custom/temperature",
-    "cpu",
-    "memory",
-    "custom/gpu",
+    "group/stats",
     "disk",
     "network",
-    "custom/update",
     "pulseaudio",
-    "idle_inhibitor",
     "custom/power"
   ],
 
@@ -158,6 +152,12 @@
     }
   },
 
+  // One pill for all system stats (details live in tooltips)
+  "group/stats": {
+    "orientation": "inherit",
+    "modules": ["cpu", "memory", "custom/gpu", "custom/temperature"]
+  },
+
   // ────────────────────────────────────────────────────────┤ temperature ├───
 
   "custom/temperature": {
@@ -207,10 +207,18 @@
 
   // ───────────────────────────────────────────────────────────────┤ time ├───
 
-  "clock#time": {
-    "format": "{:%H:%M}",
-    "tooltip": false
-    // "tooltip-format": "Standard Time: {:%I:%M %p}"
+  "clock": {
+    "format": "{:%H:%M  ·  %a %d}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#f72585'><b>{}</b></span>",
+        "weekdays": "<span color='#b9a3b3' font='7'>{}</span>",
+        "today": "<span color='#f72585'><b>{}</b></span>"
+      }
+    },
+    "actions": { "on-click": "mode", "on-click-right": "mode" }
   },
 
   // ───────────────────────────────────────────────────────────────┤ date ├───
@@ -254,13 +262,13 @@
   // ─────────────────────────────────────────────────────────────┤ network ├───
 
   "network": {
-    "interval": 2,
-    "format-ethernet": "󰈀 ↓{bandwidthDownBytes}",
-    "format-wifi": "󰤨 ↓{bandwidthDownBytes}",
+    "interval": 5,
+    "format-ethernet": "󰈀",
+    "format-wifi": "󰤨",
     "format-disconnected": "󰖪 offline",
     "tooltip-format": ":: {ifname}\nIP: {ipaddr}\n↓ {bandwidthDownBytes}  ↑ {bandwidthUpBytes}",
     "on-click-right": "kitty --title '󰤨  Network Manager TUI' bash -c nmtui",
-    "min-length": 11
+    "min-length": 3
   },
 
   // ──────────────────────────────────────────────────────┤ system update ├───
@@ -276,10 +284,10 @@
   // ─────────────────────────────────────────────────────────┤ media info ├───
 
   "mpris": {
-    "max-length": 36,
+    "max-length": 30,
     "ellipsize": true,
-    "format": "{player_icon} {title} - {artist}",
-    "format-paused": "{status_icon} {title} - {artist}",
+    "format": "{player_icon} {title}",
+    "format-paused": "{status_icon} {title}",
 
     "player-icons": {
       "default": "󰝚 ",
@@ -327,7 +335,9 @@
   "disk": {
     "path": "/",
     "interval": 30,
-    "format": "󰋊 {percentage_used}%",
+    "format": "",
+    "format-warning": "󰋊 {percentage_used}%",
+    "format-critical": "󰋊 {percentage_used}%",
     "tooltip-format": "{used} / {total} used on {path}",
     "states": { "warning": 80, "critical": 90 }
   },

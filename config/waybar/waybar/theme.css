@@ -1,0 +1,386 @@
+/* Cyberpunk Circular Theme for Waybar */
+
+/* ───────────────────────────────────────────────────────────────┤ global ├───
+*/
+* {
+  min-height: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+  /* Add subtle glow to text for cyberpunk effect */
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.3);
+}
+
+/* ──────────────────────────────────────────────────────────┤ drop shadow ├───
+*/
+window#waybar {
+  background: rgba(0, 0, 0, 0); /* Fully transparent background */
+  border-radius: 12px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ background ├───
+*/
+window#waybar > box {
+  background: rgba(30, 13, 25, 0.4); /* Very translucent main background */
+  margin: 2px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(96, 15, 177, 0.25); /* Subtle purple glow */
+}
+
+/* ─────────────────────────────────────────────────────────────┤ tooltips ├───
+*/
+tooltip {
+  background: rgba(30, 13, 25, 0.75); /* More opaque for readability */
+  border: 1.5px solid rgba(192, 11, 135, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.4);
+}
+
+tooltip label {
+  color: rgba(255, 255, 255, 0.95); /* More opaque for readability */
+  margin: -1.5px 3px;
+}
+
+/* ──────────────────────────────────────────────────────────────┤ general ├───
+*/
+#custom-theme,
+#workspaces,
+#window,
+#custom-temperature,
+#memory,
+#cpu,
+#idle_inhibitor,
+#clock,
+#custom-update,
+#mpris,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  padding: 0 4px;
+}
+
+/* Circle dots styling */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8,
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5,
+#custom-leftin1,
+#custom-leftin2,
+#custom-rightin1 {
+  color: rgba(192, 11, 135, 0.85); /* Pink dots */
+  font-size: 9px;
+  margin: 0 1px;
+  text-shadow: 0 0 4px rgba(192, 11, 135, 0.5);
+}
+
+/* ───────────────────────────────────────────────────────┤ theme switcher ├───
+*/
+#custom-theme {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  border-radius: 12px 0 0 12px;
+  margin: 3px 0 3px 3px;
+  padding: 0 8px;
+}
+
+#custom-theme:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────┤ workspaces ├───
+*/
+#workspaces {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 4px;
+}
+
+#workspaces button {
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  border-radius: 10px;
+  box-shadow: none;
+  margin: 3px 2px;
+  padding: 0 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(96, 15, 177, 0.45); /* More translucent */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.35);
+}
+
+#workspaces button.active {
+  color: rgba(0, 0, 0, 0.95); /* Almost opaque for readability */
+  background: rgba(192, 11, 135, 0.75); /* More translucent but still visible */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.7);
+  margin: 3px 2px;
+  padding: 0 8px;
+}
+
+/* ─────────────────────────────────────────────────────────────┤ window ├───
+*/
+#window {
+  background: rgba(30, 13, 25, 0.4);
+  border-radius: 12px;
+  margin: 3px 3px 3px 0;
+  padding: 0 8px;
+}
+
+/* ──────────────────────────────────────────────────────────┤ temperature ├───
+*/
+#custom-temperature {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+/* ───────────────────────────────────────────────────────────────┤ memory ├───
+*/
+#memory {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#memory.warning {
+  color: rgba(255, 200, 0, 0.95); /* More opaque for visibility */
+  text-shadow: 0 0 5px rgba(255, 200, 0, 0.6);
+}
+
+#memory.critical {
+  color: rgba(255, 33, 140, 0.95); /* More opaque for visibility */
+  text-shadow: 0 0 5px rgba(255, 33, 140, 0.7);
+}
+
+/* ──────────────────────────────────────────────────────────────────┤ cpu ├───
+*/
+#cpu {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+/* ──────────────────────────────────────────────────────────┤ distro icon ├───
+*/
+#custom-left5 {
+  color: rgba(96, 15, 177, 0.85); /* #600FB1 con transparencia */
+  background: rgba(30, 13, 25, 0.45); /* #1E0D19 con transparencia */
+  text-shadow: none;
+  margin-bottom: -2px;
+  padding-left: 3px;
+  font-size: 14px;
+}
+
+#custom-distro {
+  color: rgba(255, 255, 255, 0.95); /* White text for visibility */
+  background: rgba(96, 15, 177, 0.85); /* #600FB1 con transparencia */
+  margin: 0 -1px -2px 0;
+  padding: 0 12px;
+  text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
+  font-size: 16px;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(96, 15, 177, 0.5);
+}
+
+#custom-right2 {
+  color: rgba(96, 15, 177, 0.85); /* #600FB1 con transparencia */
+  background: rgba(30, 13, 25, 0.45); /* #1E0D19 con transparencia */
+  text-shadow: none;
+  margin-bottom: -2px;
+  font-size: 14px;
+}
+
+/* ─────────────────────────────────────────────────────┤ idle inhibitor ├───
+*/
+#idle_inhibitor {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#idle_inhibitor:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ─────────────────────────────────────────────────────────────────┤ time ├───
+*/
+#clock.time {
+  background: rgba(57, 11, 98, 0.55);
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+/* ─────────────────────────────────────────────────────────────────┤ date ├───
+*/
+#clock.date {
+  background: rgba(30, 13, 25, 0.45);
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#clock.date:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ────────────────────────────────────────────────────────┤ system update ├───
+*/
+#custom-update {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#custom-update:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────┤ media info ├───
+*/
+#mpris {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+  box-shadow: 0 0 5px rgba(96, 15, 177, 0.25);
+}
+
+#mpris:hover {
+  color: rgba(192, 11, 135, 0.95);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ────────────────────────────────────────────────────────┤ output device ├───
+*/
+#pulseaudio {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#pulseaudio:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────┤ brightness ├───
+*/
+#backlight {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+/* ──────────────────────────────────────────────────────────────┤ battery ├───
+*/
+#battery {
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  border-radius: 12px;
+  margin: 3px 0;
+  padding: 0 8px;
+}
+
+#battery.warning {
+  color: rgba(255, 200, 0, 0.95);
+  text-shadow: 0 0 5px rgba(255, 200, 0, 0.6);
+}
+
+#battery.critical {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+#battery.charging {
+  color: rgba(0, 255, 196, 0.95);
+  text-shadow: 0 0 5px rgba(0, 255, 196, 0.6);
+}
+
+/* ─────────────────────────────────────────────────────────┤ power button ├───
+*/
+#custom-power {
+  color: rgba(255, 255, 255, 0.95); /* White text with glow */
+  background: rgba(192, 11, 135, 0.65); /* More translucent but still visible */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.5);
+  border-radius: 12px;
+  margin: 3px 3px 3px 0;
+  padding: 0 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+#custom-power:hover {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(57, 11, 98, 0.75);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+  box-shadow: 0 0 12px rgba(192, 11, 135, 0.7);
+  padding: 0 12px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ font sizes ├───
+*/
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 10px;
+  font-weight: bold;
+}
+
+tooltip label,
+#window label,
+#mpris {
+  font-weight: normal;
+}
+
+/* ───────────────────────────────────────────────────────────┤ animations ├───
+*/
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(192, 11, 135, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(192, 11, 135, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(192, 11, 135, 0.3);
+  }
+}
+
+#workspaces button.active,
+#custom-distro,
+#custom-power {
+  animation: pulse 4s infinite;
+}
+
+/* Padding modules styling */
+#custom-paddw,
+#custom-paddc {
+  background: transparent;
+}

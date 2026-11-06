@@ -8,5 +8,5 @@ used=$(echo "$used" | xargs); total=$(echo "$total" | xargs)
 class=""
 [ "$temp" -ge 80 ] && class="critical"
 [ -z "$class" ] && [ "$temp" -ge 70 ] && class="warning"
-printf '{"text":"󰢮 %s%% %s°C","tooltip":":: %s\\nUsage: %s%%\\nTemp: %s°C\\nVRAM: %s / %s MiB","class":"%s"}\n' \
-  "$util" "$temp" "$name" "$util" "$temp" "$used" "$total" "$class"
+printf '{"text":"󰢮 %s%%","tooltip":":: %s\\nUsage: %s%%\\nTemp: %s°C\\nVRAM: %s / %s MiB","class":"%s"}\n' \
+  "$util" "$name" "$util" "$temp" "$used" "$total" "$class"

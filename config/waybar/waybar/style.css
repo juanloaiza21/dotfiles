@@ -1,0 +1,519 @@
+/* Highly Translucent Cyberpunk Theme for Waybar */
+
+/* ───────────────────────────────────────────────────────────────┤ global ├───
+*/
+* {
+  min-height: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+  /* Add subtle glow to text for cyberpunk effect */
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.3);
+}
+
+/* ──────────────────────────────────────────────────────────┤ drop shadow ├───
+*/
+window#waybar {
+  background: rgba(0, 0, 0, 0.1); /* More translucent shadow */
+  border-radius: 10px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ background ├───
+*/
+window#waybar > box {
+  background: rgba(30, 13, 25, 0.4); /* Very translucent main background */
+  margin: 2px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(96, 15, 177, 0.25); /* Subtle purple glow */
+}
+
+/* ─────────────────────────────────────────────────────────────┤ tooltips ├───
+*/
+tooltip {
+  background: rgba(30, 13, 25, 0.75); /* More opaque for readability */
+  border: 1.5px solid rgba(192, 11, 135, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.4);
+}
+
+tooltip label {
+  color: rgba(255, 255, 255, 0.95); /* More opaque for readability */
+  margin: -1.5px 3px;
+}
+
+/* ──────────────────────────────────────────────────────────────┤ general ├───
+*/
+#custom-theme,
+#workspaces,
+#window,
+#custom-temperature,
+#memory,
+#cpu,
+#idle_inhibitor,
+#clock,
+#custom-wifi,
+#bluetooth,
+#custom-update,
+#mpris,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  padding: 0 4px;
+}
+
+/* Replace triangular separators with rounded connectors */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8,
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5,
+#custom-leftin1,
+#custom-leftin2,
+#custom-rightin1 {
+  margin: 0;
+  padding: 0 2px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  text-shadow: none;
+  opacity: 0.7; /* More translucent dots */
+}
+
+/* ───────────────────────────────────────────────────────┤ theme switcher ├───
+*/
+#custom-theme {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  border-radius: 0 0 0 10px;
+}
+
+#custom-theme:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────┤ workspaces ├───
+*/
+#custom-left1 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+#workspaces {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  border-radius: 8px 0 0 8px;
+  margin-left: -1px;
+}
+
+#workspaces button {
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  border-radius: 8px;
+  box-shadow: none;
+  margin: 2px 0;
+  padding: 0 5px;
+  transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(96, 15, 177, 0.45); /* More translucent */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.35);
+}
+
+#workspaces button.active {
+  color: rgba(0, 0, 0, 0.95); /* Almost opaque for readability */
+  background: rgba(192, 11, 135, 0.75); /* More translucent but still visible */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.7);
+  margin: 2px;
+  padding: 0 10px;
+}
+
+#custom-right1 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-left: -1px;
+}
+
+/* ──────────────────────────────────────────────────────────┤ temperature ├───
+*/
+#custom-paddc {
+  padding-right: 22px;
+}
+
+#custom-left2 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(151, 9, 106, 0.75);
+  margin-right: -1px;
+}
+
+#custom-temperature {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  border-radius: 8px 0 0 8px;
+  padding: 0 0 0 5px;
+  margin-left: -1px;
+}
+
+/* ───────────────────────────────────────────────────────────────┤ memory ├───
+*/
+#custom-left3 {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  color: rgba(30, 13, 25, 0.75);
+  margin-right: -1px;
+}
+
+#memory {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  padding: 0 0 0 5px;
+  margin-left: -1px;
+}
+
+#memory.warning {
+  color: rgba(255, 200, 0, 0.95); /* More opaque for visibility */
+  text-shadow: 0 0 5px rgba(255, 200, 0, 0.6);
+}
+
+#memory.critical {
+  color: rgba(255, 33, 140, 0.95); /* More opaque for visibility */
+  text-shadow: 0 0 5px rgba(255, 33, 140, 0.7);
+}
+
+/* ──────────────────────────────────────────────────────────────────┤ cpu ├───
+*/
+#custom-left4 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+#cpu {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  padding: 0 0 0 5px;
+  margin-left: -1px;
+}
+
+#custom-leftin1 {
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+/* ──────────────────────────────────────────────────────────┤ distro icon ├───
+*/
+#custom-left5 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(96, 15, 177, 0.75);
+  margin-right: -1px;
+}
+
+#custom-distro {
+  color: rgba(0, 0, 0, 0.9); /* Keep opaque for readability */
+  background: rgba(96, 15, 177, 0.65); /* More translucent but still visible */
+  margin: 0 0 0 -1px;
+  padding: 0 0 0 5px;
+  border-radius: 8px;
+  text-shadow: 0 0 3px rgba(192, 11, 135, 0.5);
+  box-shadow: 0 0 8px rgba(96, 15, 177, 0.4);
+}
+
+#custom-right2 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(96, 15, 177, 0.75);
+  margin-left: -1px;
+}
+
+/* ─────────────────────────────────────────────────────────────────┤ time ├───
+*/
+#custom-rightin1 {
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+#idle_inhibitor {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  padding: 0 0 0 7px;
+  border-radius: 8px 0 0 8px;
+}
+
+#idle_inhibitor:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+#clock.time {
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  margin-left: -2px;
+  padding: 0 3px 0 0;
+}
+
+#custom-right3 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+/* ─────────────────────────────────────────────────────────────────┤ date ├───
+*/
+#clock.date {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  margin-left: -1px;
+}
+
+#clock.date:hover {
+  color: rgba(192, 11, 135, 0.9);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+#custom-right4 {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  color: rgba(30, 13, 25, 0.75);
+  margin-left: -1px;
+}
+
+/* ────────────────────────────────────────────────────────────────┤ wi-fi ├───
+*/
+#custom-wifi {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  padding: 0 8px 0 5px;
+}
+
+#custom-wifi:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+/* ────────────────────────────────────────────────────────────┤ bluetooth ├───
+*/
+#bluetooth {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  padding-right: 5px;
+}
+
+#bluetooth:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+/* ────────────────────────────────────────────────────────┤ system update ├───
+*/
+#custom-update {
+  padding-right: 8px;
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  border-radius: 0 8px 8px 0;
+}
+
+#custom-update:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+#custom-right5 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(151, 9, 106, 0.75);
+  margin-left: -1px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ media info ├───
+*/
+#mpris {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  padding: 0 8px;
+  border-radius: 8px;
+  margin: 0 2px;
+  box-shadow: 0 0 5px rgba(96, 15, 177, 0.25);
+}
+
+#mpris:hover {
+  color: rgba(192, 11, 135, 0.95);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+}
+
+/* ────────────────────────────────────────────────────────┤ output device ├───
+*/
+#custom-left6 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(151, 9, 106, 0.75);
+  margin-right: -1px;
+}
+
+#pulseaudio {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  padding: 0 5px;
+  border-radius: 8px 0 0 8px;
+  margin-left: -1px;
+}
+
+#pulseaudio:hover {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+/* ───────────────────────────────────────────────────────────┤ brightness ├───
+*/
+#custom-left7 {
+  background: rgba(151, 9, 106, 0.55); /* More translucent */
+  color: rgba(30, 13, 25, 0.75);
+  margin-right: -1px;
+}
+
+#backlight {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  padding: 0 5px;
+  margin-left: -1px;
+}
+
+/* ──────────────────────────────────────────────────────────────┤ battery ├───
+*/
+#custom-left8 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+#battery {
+  color: rgba(255, 255, 255, 0.95); /* More opaque text for readability */
+  background: rgba(57, 11, 98, 0.55); /* More translucent */
+  padding: 0 5px;
+  margin-left: -1px;
+}
+
+#battery.warning {
+  color: rgba(255, 200, 0, 0.95);
+  text-shadow: 0 0 5px rgba(255, 200, 0, 0.6);
+}
+
+#battery.critical {
+  color: rgba(255, 33, 140, 0.95);
+  text-shadow: 0 0 8px rgba(255, 33, 140, 0.7);
+}
+
+#battery.charging {
+  color: rgba(0, 255, 196, 0.95);
+  text-shadow: 0 0 5px rgba(0, 255, 196, 0.6);
+}
+
+/* ─────────────────────────────────────────────────────────┤ power button ├───
+*/
+#custom-leftin2 {
+  background: rgba(30, 13, 25, 0.45); /* More translucent */
+  color: rgba(57, 11, 98, 0.75);
+  margin-right: -1px;
+}
+
+#custom-power {
+  color: rgba(0, 0, 0, 0.95); /* Keep opaque for readability */
+  background: rgba(192, 11, 135, 0.65); /* More translucent but still visible */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 8px rgba(192, 11, 135, 0.5);
+  border-radius: 12px;
+  margin: 2px 4px 2px 2px;
+  padding: 0 10px;
+  transition: all 0.2s ease;
+}
+
+#custom-power:hover {
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(57, 11, 98, 0.75);
+  text-shadow: 0 0 5px rgba(192, 11, 135, 0.7);
+  box-shadow: 0 0 12px rgba(192, 11, 135, 0.7);
+  padding: 0 12px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ font sizes ├───
+*/
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 10px;
+  font-weight: bold;
+}
+
+tooltip label,
+#window label,
+#mpris {
+  font-weight: normal;
+}
+
+/* Revised separator styles */
+#custom-left1,
+#custom-left2,
+#custom-left3,
+#custom-left4,
+#custom-left5,
+#custom-left6,
+#custom-left7,
+#custom-left8,
+#custom-right1,
+#custom-right2,
+#custom-right3,
+#custom-right4,
+#custom-right5 {
+  font-size: 12px;
+}
+
+#custom-leftin1,
+#custom-leftin2,
+#custom-rightin1 {
+  font-size: 12px;
+}
+
+/* ──────────────────────────────────────────────────────────┤ distro icon ├───
+*/
+#custom-distro {
+  font-size: 14.6px;
+}
+
+/* ───────────────────────────────────────────────────────────┤ animations ├───
+*/
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 4px rgba(192, 11, 135, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(192, 11, 135, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(192, 11, 135, 0.3);
+  }
+}
+
+#workspaces button.active,
+#custom-distro,
+#custom-power {
+  animation: pulse 4s infinite;
+}
+
+/* Additional rounded corners for all main elements */
+#custom-theme,
+#workspaces,
+#window,
+#custom-temperature,
+#memory,
+#cpu,
+#idle_inhibitor,
+#clock,
+#custom-wifi,
+#bluetooth,
+#custom-update,
+#mpris,
+#pulseaudio,
+#backlight,
+#battery {
+  border-radius: 8px;
+  margin: 2px 0;
+}
+
+/* Enhance translucency for entire bar */
+window#waybar {
+  background: rgba(0, 0, 0, 0); /* Fully transparent background */
+}

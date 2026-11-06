@@ -33,13 +33,10 @@ window#waybar > box {
 #workspaces,
 #window,
 #clock,
+#stats,
 #custom-events,
 #tray,
 #mpris,
-#custom-temperature,
-#cpu,
-#memory,
-#custom-gpu,
 #disk,
 #network,
 #custom-update,
@@ -111,15 +108,15 @@ window#waybar.empty #window {
 
 /* ───────────────────────────────────────────────────────────────── clock */
 #clock { padding: 0 14px; }
-#clock.time { color: @text; }
-#clock.date { color: @muted; }
-#clock.date:hover { color: @pink; }
+#clock:hover { color: @pink; }
 
 /* ──────────────────────────────────────────────────────────── system stats */
+/* one pill (#stats); the modules inside are plain text with breathing room */
+#stats { padding: 0 6px; }
 #custom-temperature,
 #cpu,
 #memory,
-#custom-gpu,
+#custom-gpu { background: transparent; border: none; margin: 0; padding: 0 10px; color: @text; }
 #disk { padding: 0 10px; }
 
 #memory.warning,
