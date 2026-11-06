@@ -30,7 +30,7 @@ mainbox {
 }
 
 listview {
-  lines:                    6;
+  lines:                    7;
   spacing:                  4px;
   fixed-height:             true;
   scrollbar:                false;

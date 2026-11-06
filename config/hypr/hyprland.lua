@@ -120,6 +120,8 @@ hl.config({
     misc = {
         force_default_wallpaper = -1,
         disable_hyprland_logo   = false,
+        mouse_move_enables_dpms = true,  -- any mouse move wakes screens that were turned off
+        key_press_enables_dpms  = true,  -- any key press wakes them too
     },
 })
 
@@ -161,6 +163,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("~/.config/hypr/scripts/screen-off.sh"))   -- screens off, processes keep running
 
 -- Focus (WASD)
 hl.bind(mainMod .. " + A", hl.dsp.focus({ direction = "left" }))
